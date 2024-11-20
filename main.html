@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araf's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(21, 198, 217, 0.8);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-popup {
+            width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: scaleUp 0.5s ease-in-out;
+        }
+
+        .profile-popup h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .profile-popup p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .profile-popup button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .profile-popup button:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Header Section */
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: #fff;
+            color: #333;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about, .skills, .menu, .projects, .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: #f9f9f9;
+        }
+
+        .skill-list {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .skill-item {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            font-weight: 500;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.1);
+        }
+
+        /* Menu Section */
+        .menu {
+            background: #f1f1f1;
+        }
+
+        .menu h2 {
+            margin-bottom: 2rem;
+        }
+
+        .menu-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            width: 250px;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+        }
+
+        .menu-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f1f1f1;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact input, .contact textarea, .contact button {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact input, .contact textarea {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .contact input::placeholder, .contact textarea::placeholder {
+            color: #ddd;
+        }
+
+        .contact button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <div class="logo">ARAF</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Hi, I'm Araf</h1>
+        <p>A Computer Science Student passionate about coding and design.</p>
+        <a href="#contact" class="btn">Contact Me</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I am currently studying Computer Science and Engineering at IIUC. I love solving problems and building web-based projects.</p>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skill-list">
+            <div class="skill-item"><i class="fas fa-code"></i>C</div>
+            <div class="skill-item"><i class="fas fa-laptop-code"></i>C++</div>
+            <div class="skill-item"><i class="fab fa-html5"></i>HTML</div>
+            <div class="skill-item"><i class="fab fa-css3-alt"></i>CSS</div>
+            <div class="skill-item"><i class="fab fa-js-square"></i>JavaScript</div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <h2>Menu</h2>
+        <div class="menu-list">
+            <div class="menu-item" onclick="openProfilePopup()">
+                <i class="fas fa-user"></i>
+                <h3>Profile</h3>
+                <p>View your profile details and progress.</p>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-tasks"></i>
+                <h3>Projects</h3>
+                <p>Manage and track your projects easily.</p>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Messages</h3>
+                <p>Connect and communicate with others.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="overlay" id="profileOverlay">
+        <div class="profile-popup">
+            <h2>Araf's Profile</h2>
+            <p><strong>Name:</strong> MD Al Araf Hossain </p>
+            <p><strong>Role:</strong> Computer Science Student</p>
+            <p><strong>Semester:</strong> 2nd </p>
+            <p><strong>University:</strong> International Islamic University Chittagong</p>
+            <button onclick="closeProfilePopup()">Close</button>
+        </div>
+    </div>
+
+    <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+        <div class="project-item" onclick="showComingSoon(this)">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Project 1</h3>
+        </div>
+        <div class="project-item" onclick="showComingSoon(this)">
+            <i class="fas fa-database"></i>
+            <h3>Project 2</h3>
+        </div>
+        <div class="project-item" onclick="showComingSoon(this)">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Project 3</h3>
+        </div>
+    </div>
+</section>
+
+<style>
+    .projects {
+        background: #f9f9f9;
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .project-list {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .project-item {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+
+    .project-item i {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-item:hover {
+        transform: scale(1.1);
+    }
+
+    .project-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #333;
+        color: #fff;
+        padding: 2rem 3rem;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        animation: showMessage 0.5s forwards;
+    }
+
+    @keyframes showMessage {
+        from {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+</style>
+
+<script>
+    function showComingSoon(projectItem) {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('overlay');
+        document.body.appendChild(overlay);
+
+        // Create message box
+        const messageBox = document.createElement('div');
+        messageBox.classList.add('project-message');
+        messageBox.textContent = 'Coming Soon...';
+        document.body.appendChild(messageBox);
+
+        // Show overlay and message box
+        overlay.style.display = 'block';
+
+        // Close message box and overlay on click
+        overlay.addEventListener('click', () => {
+            overlay.remove();
+            messageBox.remove();
+        });
+    }
+</script>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Araf. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for contacting me! I will get back to you soon.');
+        });
+    </script>
+<script>
+    function openProfilePopup() {
+        document.getElementById('profileOverlay').style.display = 'flex';
+    }
+
+    function closeProfilePopup() {
+        document.getElementById('profileOverlay').style.display = 'none';
+    }
+</script>
