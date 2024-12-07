@@ -333,124 +333,247 @@
     </div>
 
     <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-list">
-        <div class="project-item" onclick="showComingSoon(this)">
-            <i class="fas fa-laptop-code"></i>
-            <h3>Project 1</h3>
+        <h2>Projects</h2>
+        <div class="project-list">
+            <!-- Project 1 -->
+            <div class="project-item">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Project 1</h3>
+                <p>Short description of Project 1. Explains its key feature or purpose.</p>
+                <div class="project-links">
+                    <a href="https://github.com/username/project1" target="_blank" class="project-btn github-btn">
+                        <i class="fas fa-code"></i> GitHub
+                    </a>
+                    <a href="https://username.github.io/project1" target="_blank" class="project-btn demo-btn">
+                        <i class="fas fa-laptop-code"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Project 2 -->
+            <div class="project-item">
+                <i class="fas fa-database"></i>
+                <h3>Project 2</h3>
+                <p>Short description of Project 2. Explains its key feature or purpose.</p>
+                <div class="project-links">
+                    <a href="https://github.com/username/project2" target="_blank" class="project-btn github-btn">
+                        <i class="fas fa-code"></i> GitHub
+                    </a>
+                    <a href="https://username.github.io/project2" target="_blank" class="project-btn demo-btn">
+                        <i class="fas fa-laptop-code"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Project 3 -->
+            <div class="project-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Project 3</h3>
+                <p>Short description of Project 3. Explains its key feature or purpose.</p>
+                <div class="project-links">
+                    <a href="https://github.com/username/project3" target="_blank" class="project-btn github-btn">
+                        <i class="fas fa-code"></i> GitHub
+                    </a>
+                    <a href="https://username.github.io/project3" target="_blank" class="project-btn demo-btn">
+                        <i class="fas fa-laptop-code"></i> Live Demo
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="project-item" onclick="showComingSoon(this)">
-            <i class="fas fa-database"></i>
-            <h3>Project 2</h3>
-        </div>
-        <div class="project-item" onclick="showComingSoon(this)">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>Project 3</h3>
+    </section>
+    
+    <!-- Overlay for project demo -->
+    <div class="overlay" id="projectOverlay">
+        <div class="profile-popup">
+            <h2>Project Demo</h2>
+            <p><strong>Project Description:</strong> Detailed information about the selected project.</p>
+            <p><strong>Technologies Used:</strong> List of technologies like HTML, CSS, JavaScript, etc.</p>
+            <button onclick="closeProjectPopup()">Close</button>
         </div>
     </div>
-</section>
-
-<style>
-    .projects {
-        background: #f9f9f9;
-        padding: 4rem 2rem;
-        text-align: center;
-    }
-
-    .project-list {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .project-item {
-        width: 200px;
-        height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        text-align: center;
-    }
-
-    .project-item i {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .project-item:hover {
-        transform: scale(1.1);
-    }
-
-    .project-message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        background: #333;
-        color: #fff;
-        padding: 2rem 3rem;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        animation: showMessage 0.5s forwards;
-    }
-
-    @keyframes showMessage {
-        from {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
+    
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
-        to {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
+    
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(21, 198, 217, 0.8);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
         }
-    }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        display: none;
-    }
-</style>
-
-<script>
-    function showComingSoon(projectItem) {
-        // Create overlay
-        const overlay = document.createElement('div');
-        overlay.classList.add('overlay');
-        document.body.appendChild(overlay);
-
-        // Create message box
-        const messageBox = document.createElement('div');
-        messageBox.classList.add('project-message');
-        messageBox.textContent = 'Coming Soon...';
-        document.body.appendChild(messageBox);
-
-        // Show overlay and message box
-        overlay.style.display = 'block';
-
-        // Close message box and overlay on click
-        overlay.addEventListener('click', () => {
-            overlay.remove();
-            messageBox.remove();
-        });
-    }
-</script>
-
+    
+        /* Popup */
+        .profile-popup {
+            width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: scaleUp 0.5s ease-in-out;
+        }
+    
+        .profile-popup h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: #333;
+        }
+    
+        .profile-popup p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+    
+        .profile-popup button {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+    
+        .profile-popup button:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+    
+        @keyframes scaleUp {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    
+        /* Project Section */
+        .projects {
+            background: #f9f9f9;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+    
+        .project-list {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    
+        .project-item {
+            width: 220px;
+            padding: 20px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-align: center;
+            min-height: 300px;
+        }
+    
+        .project-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    
+        .project-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+    
+        .project-item p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+    
+        .project-item:hover {
+            transform: scale(1.05);
+        }
+    
+        .project-links {
+            margin-top: auto;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            width: 100%;
+        }
+    
+        .project-btn {
+            padding: 8px 12px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+    
+        .github-btn {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+    
+        .demo-btn {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+    
+        .project-btn:hover {
+            transform: scale(1.05);
+        }
+    
+        .github-btn:hover {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        }
+    
+        .demo-btn:hover {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+    </style>
+    
+    <script>
+        // Show project demo (overlay)
+        function showProjectPopup() {
+            const overlay = document.getElementById('projectOverlay');
+            overlay.style.display = 'flex';
+        }
+    
+        // Close project demo (overlay)
+        function closeProjectPopup() {
+            const overlay = document.getElementById('projectOverlay');
+            overlay.style.display = 'none';
+        }
+    
+        // Example: Add this function call to project buttons when clicked
+        // showProjectPopup();  // Call to show overlay when a project button is clicked
+    </script>
+    
+    
     <section id="contact" class="contact">
         <h2>Contact Me</h2>
         <form id="contact-form">
@@ -478,5 +601,5 @@
 
     function closeProfilePopup() {
         document.getElementById('profileOverlay').style.display = 'none';
-    }
+    }
 </script>
