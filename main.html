@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/theme/dracula.min.css" rel="stylesheet">
+  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- SVG Filters -->
+  <svg style="position: absolute; width: 0; height: 0;">
+    <filter id="glitch">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="B"/>
+    </filter>
+  </svg>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <button class="mode-toggle" aria-label="Toggle dark/light mode">🌙</button>
+      <button class="sound-toggle" aria-label="Toggle sound">🔊</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <canvas id="three-canvas"></canvas>
+    <div class="hero-content">
+      <h1>Hey!</h1>
+      <div class="code-editor">
+        <textarea id="code">console.log("GOAT CR7");</textarea>
+    
+        <div id="code-output" class="code-output"></div>
+      </div>
+      <div class="tagline" id="tagline">Building the Future, One Line at a Time</div>
+      <div class="hero-profile"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="particles" id="about-particles"></div>
+      <div class="about-card glass">
+        <h2>About Me</h2>
+        <p>A Computer Science student driven to build innovative web applications and solve complex problems with clean, efficient code.</p>
+        <div class="skill-cloud">
+          <span>Problem-Solving</span>
+          <span>Algorithms</span>
+          <span>Web Development</span>
+          <span>Data Structures</span>
+        </div>
+        <div class="journey-timeline">
+          <div class="journey-item"><span>Started Coding: 2024</span></div>
+          <div class="journey-item"><span>First Project: 2025</span></div>
+          <div class="journey-item"><span>Joined IIUC: 2024</span></div>
+        </div>
+        <a href="/resume.pdf" class="resume-btn" download>Download Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <div class="particles" id="experience-particles"></div>
+      <h2>Experience</h2>
+      <canvas id="radar-chart"></canvas>
+      <div class="experience-grid">
+        <div class="exp-card glass" style="--index: 0;">
+          <div class="exp-front">
+            <img src="https://img.icons8.com/color/48/000000/c-programming.png" alt="C/C++">
+            <h3>C/C++</h3>
+          </div>
+          <div class="exp-back">
+            <p>Used in Algorithm Visualizer, competitive programming.</p>
+          </div>
+        </div>
+        <div class="exp-card glow glass" style="--index: 1;">
+          <div class="exp-front">
+            <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png" alt="Java">
+            <h3>Java</h3>
+          </div>
+          <div class="exp-back">
+            <p>Built Web App Dashboard, Swing applications.</p>
+          </div>
+        </div>
+        <div class="exp-card slide glass" style="--index: 2;">
+          <div class="exp-front">
+            <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML">
+            <h3>HTML</h3>
+          </div>
+          <div class="exp-back">
+            <p>Structured Chat Application, portfolio site.</p>
+          </div>
+        </div>
+        <div class="exp-card glass" style="--index: 3;">
+          <div class="exp-front">
+            <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS">
+            <h3>CSS</h3>
+          </div>
+          <div class="exp-back">
+            <p>Styled Chat Application, responsive designs.</p>
+          </div>
+        </div>
+        <div class="exp-card glow glass" style="--index: 4;">
+          <div class="exp-front">
+            <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript">
+            <h3>JavaScript</h3>
+          </div>
+          <div class="exp-back">
+            <p>Interactive features in Chat Application.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class = "award-container" id = "certificates">
+    <div class = "title">
+      <div class = "header-title">
+        <h1>Certificates</h1>
+        <p>My Achievements</p>
+      </div>
+    </div>
+    <div class = "award-full-content" id = "award-content1" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px,0px);">
+      <div class = "award-content">
+        <div class = "award-header">
+          <img src = "C2.png" alt>
+        </div>
+        <div class = "res-div">
+          <h3>C/C++ Programming & Problem Solving</h3>
+          <p>Mastery of essential C++ programming fundamentals</p>
+          <div class = "inner-certificate">  
+          </div>
+        </div>
+      </div>
+
+      <div class = "award-full-content" id = "award-content1" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px,0px);">
+      <div class = "award-content">
+        <div class = "award-header">
+          <img src = "C1.png" alt>
+        </div>
+        <div>
+          <h3>C/C++ Programming & Problem Solving</h3>
+          <p>Mastery of essential C++ programming fundamentals</p>
+          <div class = "inner-certificate">  
+            <p> -> Variable & Mathematical operations. </p>
+            <p> -> Condition & Loop. </p>
+            <p> -> Functions & Standard Template Library.  </p>
+            <p> -> Object-Oriented Programming Concepts.</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+      
+  </section>
+
+  <!-- Education Section (Zigzag Roadmap) -->
+  <section class="education" id="education">
+    <div class="container">
+      <div class="particles" id="education-particles"></div>
+      <h2>Education</h2>
+      <div class="roadmap">
+        <svg>
+          <path d="M0,75 Q400,50 800,75" fill="none" stroke="url(#grad)" stroke-width="4"/>
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#3b82f6"/>
+              <stop offset="100%" style="stop-color:#14b8a6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="education-item">
+          <div class="education-box glass">
+            <img src="https://img.icons8.com/ios-filled/20/ffffff/graduation-cap.png" alt="Graduation cap icon">
+            <h3>SSC (2019-2021)</h3>
+            <div class="education-details glass">
+              <p>Institution: St. Placid School and College</p>
+              <p>Group: Science</p>
+              <p>CGPA: 4.7/5.0</p>
+            </div>
+          </div>
+        </div>
+        <div class="education-item">
+          <div class="education-box glass">
+            <img src="https://img.icons8.com/ios-filled/20/ffffff/graduation-cap.png" alt="Graduation cap icon">
+            <h3>HSC (2021-2023)</h3>
+            <div class="education-details glass">
+              <p>Institution: St. Placid School and College</p>
+              <p>Group: Science</p>
+              <p>CGPA: 4.7/5.0</p>
+            </div>
+          </div>
+          <!-- CHANGED: Added milestone details -->
+          <div class="milestone-marker" style="left: 50%; top: 75px;" data-tooltip="Science Fair Winner">
+            <div class="milestone-details">Won first place in the regional science fair for a physics project.</div>
+          </div>
+        </div>
+        <div class="education-item">
+          <div class="education-box glass">
+            <img src="https://img.icons8.com/ios-filled/20/ffffff/graduation-cap.png" alt="Graduation cap icon">
+            <h3>BSc (2024-...)</h3>
+            <div class="education-details glass">
+              <p>Institution: International Islamic University Chittagong</p>
+              <p>Department: Computer Science & Engineering</p>
+              <p>Semester: 3rd</p>
+              <p>CGPA: 0.0/4.0 (Ongoing)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="particles" id="projects-particles"></div>
+      <h2>My Projects</h2>
+      <div class="project-filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="web">Web</button>
+        <button data-filter="cpp">C++</button>
+        <button data-filter="java">Java</button>
+      </div>
+      <div class="project-grid">
+        <div class="project-card glass" data-category="cpp" style="--index: 0;">
+          <img src="Sample1.png" alt="Algorithm Visualizer">
+          <video loop muted>
+            <source src="https://via.placeholder.com/240x120.mp4" type="video/mp4">
+          </video>
+          <h3>Algorithm Visualizer</h3>
+          <div class="tech-stack">Tech: C/C++, JavaScript</div>
+          <div class="project-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://example.com" target="_blank">Demo</a>
+          </div>
+        </div>
+        <div class="project-card glow glass" data-category="web java" style="--index: 1;">
+          <img src="Sample2.png" alt="Web App Dashboard">
+          <video loop muted>
+            <source src="https://via.placeholder.com/240x120.mp4" type="video/mp4">
+          </video>
+          <h3>Web App Dashboard</h3>
+          <div class="tech-stack">Tech: Java, HTML, CSS</div>
+          <div class="project-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://example.com" target="_blank">Demo</a>
+          </div>
+        </div>
+        <div class="project-card glass" data-category="web" style="--index: 2;">
+          <!-- NEW: Added featured badge -->
+          <div class="featured-badge">Featured</div>
+          <img src="Sample3.png" alt="Chat Application">
+          <video loop muted>
+            <source src="https://via.placeholder.com/240x120.mp4" type="video/mp4">
+          </video>
+          <h3>Chat Application</h3>
+          <div class="tech-stack">Tech: HTML, CSS, JavaScript</div>
+          <div class="project-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://example.com" target="_blank">Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="particles" id="contact-particles"></div>
+      <h2>Contact Me</h2>
+      <form class="contact-form" action="https://formspree.io/f/xkgrajzv" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+        <!-- NEW: Added form feedback -->
+        <div class="form-feedback" id="form-feedback"></div>
+      </form>
+      <div class="contact-links">
+        <a href="mailto:myselfaraf1457@gmail.com" data-tooltip="Gmail">📧</a>
+        <a href="https://linkedin.com" target="_blank" data-tooltip="LinkedIn">🔗</a>
+        <a href="https://github.com/araf1011" target="_blank" data-tooltip="GitHub">🐙</a>
+      </div>
+    </div>
+    <div class="chatbot" id="chatbot">
+      <div class="chatbot-header">
+        <span>CodeBot</span>
+        <span class="chatbot-close">✖</span>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <p>Hi! Ask about my skills or projects!</p>
+        <!-- NEW: Added typing indicator -->
+        <p class="chatbot-typing" id="chatbot-typing">Typing...</p>
+      </div>
+      <input type="text" id="chatbot-input" placeholder="Type a question...">
+    </div>
+    <div class="chatbot-toggle" id="chatbot-toggle">💬</div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <a href="#hero" class="back-to-top">Back to Top</a>
+
+  <!-- Modal -->
+  <div class="modal" id="project-modal">
+    <div class="modal-content glass">
+      <span class="close-modal">✖</span>
+      <img id="modal-img" src="" alt="Project">
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <div class="tech-stack" id="modal-tech"></div>
+      <div class="project-links" id="modal-links"></div>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@0.11.0/dist/js-confetti.browser.js"></script>
+  <!-- NEW: Added vanilla-tilt for hero profile -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        playSound('click');
+      });
+    });
+
+    // Dark/Light mode
+    const modeToggle = document.querySelector('.mode-toggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      modeToggle.textContent = document.body.classList.contains('light-mode') ? '⛅' : '🌙';
+      playSound('click');
+    });
+
+    // Sound toggle
+    let soundEnabled = true;
+    const soundToggle = document.querySelector('.sound-toggle');
+    soundToggle.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+      playSound('click');
+    });
+    function playSound(type) {
+      if (!soundEnabled) return;
+      const audio = new Audio(type === 'click' ? 'https://assets.mixkit.co/sfx/preview/mixkit-click-button-1110.mp3' : 'https://assets.mixkit.co/sfx/preview/mixkit-typewriter-key-1133.mp3');
+      audio.play();
+    }
+
+    // Custom cursor
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // Three.js 3D nodes
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.z = 50;
+    const nodes = [];
+    for (let i = 0; i < 10; i++) {
+      const geometry = new THREE.BoxGeometry(2, 2, 2);
+      const material = new THREE.MeshBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.5 });
+      const node = new THREE.Mesh(geometry, material);
+      node.position.set((Math.random() - 0.5) * 50, (Math.random() - 0.5) * 50, (Math.random() - 0.5) * 50);
+      scene.add(node);
+      nodes.push(node);
+    }
+    const lines = [];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const geometry = new THREE.BufferGeometry().setFromPoints([
+          nodes[i].position,
+          nodes[j].position
+        ]);
+        const material = new THREE.LineBasicMaterial({ color: 0x14b8a6, transparent: true, opacity: 0.2 });
+        const line = new THREE.Line(geometry, material);
+        scene.add(line);
+        lines.push(line);
+      }
+    }
+    function animate3D() {
+      requestAnimationFrame(animate3D);
+      nodes.forEach(node => {
+        node.rotation.x += 0.01;
+        node.rotation.y += 0.01;
+      });
+      renderer.render(scene, camera);
+    }
+    animate3D();
+
+    // CHANGED: CodeMirror editor with dynamic output
+    const editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+      mode: 'javascript',
+      theme: 'dracula',
+      lineNumbers: true,
+      readOnly: false
+    });
+    editor.setSize('100%', '150px');
+    const codeOutput = document.getElementById('code-output');
+    editor.on('change', () => {
+      try {
+        const code = editor.getValue();
+        const originalConsoleLog = console.log;
+        let output = '';
+        console.log = (msg) => { output += msg + '\n'; };
+        eval(code); // Note: eval is used for simplicity; consider a sandbox for production
+        console.log = originalConsoleLog;
+        codeOutput.textContent = output || 'No output';
+        playSound('type');
+      } catch (error) {
+        codeOutput.textContent = 'Error: ' + error.message;
+      }
+    });
+
+    // NEW: 3D tilt effect for hero profile
+    VanillaTilt.init(document.querySelector('.hero-profile'), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      'max-glare': 0.5
+    });
+
+    // Tagline typewriter
+    const tagline = document.getElementById('tagline');
+    const phrases = ['Building the Future, One Line at a Time', 'Solving Problems with Code', 'Innovating Tech Daily'];
+    let phraseIndex = 0;
+    function typeTagline() {
+      const text = phrases[phraseIndex];
+      let i = 0;
+      tagline.textContent = '';
+      const interval = setInterval(() => {
+        tagline.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+          clearInterval(interval);
+          setTimeout(() => {
+            deleteTagline();
+          }, 2000);
+        }
+      }, 100);
+    }
+    function deleteTagline() {
+      const interval = setInterval(() => {
+        tagline.textContent = tagline.textContent.slice(0, -1);
+        if (tagline.textContent === '') {
+          clearInterval(interval);
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(typeTagline, 500);
+        }
+      }, 50);
+    }
+    typeTagline();
+
+    // Radar chart
+    new Chart(document.getElementById('radar-chart'), {
+      type: 'radar',
+      data: {
+        labels: ['C/C++', 'Java', 'HTML', 'CSS', 'JavaScript'],
+        datasets: [{
+          label: 'Skills',
+          data: [80, 40, 69, 55, 50],
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          borderColor: '#3b82f6',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        scales: {
+          r: {
+            ticks: { display: false },
+            grid: { lineWidth: 1 },
+            angleLines: { color: '#475569' }
+          }
+        }
+      }
+    });
+
+    // Experience card flip
+    document.querySelectorAll('.exp-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+        playSound('click');
+      });
+    });
+
+    // Education click-to-reveal and scroll animation
+    document.querySelectorAll('.education-box').forEach(box => {
+      box.addEventListener('click', () => {
+        document.querySelectorAll('.education-box').forEach(otherBox => {
+          if (otherBox !== box) otherBox.classList.remove('active');
+        });
+        box.classList.toggle('active');
+        playSound('click');
+      });
+    });
+    const educationItems = document.querySelectorAll('.education-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.5 });
+    educationItems.forEach(item => observer.observe(item));
+
+    // NEW: Milestone click-to-reveal
+    document.querySelectorAll('.milestone-marker').forEach(marker => {
+      marker.addEventListener('click', () => {
+        document.querySelectorAll('.milestone-marker').forEach(otherMarker => {
+          if (otherMarker !== marker) otherMarker.classList.remove('active');
+        });
+        marker.classList.toggle('active');
+        playSound('click');
+      });
+    });
+
+    // Education tooltips
+    tippy('.milestone-marker', {
+      content: el => el.getAttribute('data-tooltip'),
+      theme: 'glass',
+      animation: 'fade'
+    });
+
+    // Project filters
+    const filterButtons = document.querySelectorAll('.project-filters button');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(' ');
+          card.style.display = filter === 'all' || categories.includes(filter) ? 'block' : 'none';
+        });
+        playSound('click');
+      });
+    });
+
+    // CHANGED: Project modals with detailed descriptions
+    const modal = document.getElementById('project-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalTech = document.getElementById('modal-tech');
+    const modalLinks = document.getElementById('modal-links');
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        modalImg.src = card.querySelector('img').src;
+        modalTitle.textContent = card.querySelector('h3').textContent;
+        modalTech.textContent = card.querySelector('.tech-stack').textContent;
+        modalLinks.innerHTML = card.querySelector('.project-links').innerHTML;
+        const projectName = card.querySelector('h3').textContent.toLowerCase();
+        if (projectName.includes('algorithm visualizer')) {
+          modalDesc.textContent = 'A tool to visualize sorting and graph algorithms, built to help students understand complex concepts through interactive animations.';
+        } else if (projectName.includes('web app dashboard')) {
+          modalDesc.textContent = 'A responsive dashboard for managing web applications, featuring real-time data visualization and user-friendly controls.';
+        } else if (projectName.includes('chat application')) {
+          modalDesc.textContent = 'A real-time chat application with a sleek UI, supporting multiple users and dynamic message updates.';
+        } else {
+          modalDesc.textContent = `This is a ${projectName} project showcasing my skills.`;
+        }
+        modal.style.display = 'flex';
+        playSound('click');
+      });
+    });
+    document.querySelector('.close-modal').addEventListener('click', () => {
+      modal.style.display = 'none';
+      playSound('click');
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        playSound('click');
+      }
+    });
+
+    // CHANGED: Project video hover with fallback
+    projectCards.forEach(card => {
+      const video = card.querySelector('video');
+      video.addEventListener('loadeddata', () => {
+        video.setAttribute('loaded', '');
+      });
+      video.addEventListener('error', () => {
+        video.removeAttribute('loaded');
+      });
+      card.addEventListener('mouseenter', () => video.play());
+      card.addEventListener('mouseleave', () => video.pause());
+    });
+
+    // CHANGED: Contact form with feedback and validation
+    const jsConfetti = new JSConfetti();
+    const contactForm = document.querySelector('.contact-form');
+    const formFeedback = document.getElementById('form-feedback');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = contactForm.querySelector('input[name="email"]').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        formFeedback.textContent = 'Please enter a valid email address.';
+        formFeedback.classList.add('error');
+        return;
+      }
+      jsConfetti.addConfetti({ confettiColors: ['#3b82f6', '#14b8a6', '#f43f5e'] });
+      formFeedback.textContent = 'Message sent successfully!';
+      formFeedback.classList.add('success');
+      setTimeout(() => {
+        contactForm.submit();
+      }, 1000);
+      playSound('click');
+    });
+
+    // CHANGED: Chatbot with typing indicator and more responses
+    const chatbot = document.getElementById('chatbot');
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotClose = document.querySelector('.chatbot-close');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+    const chatbotInput = document.getElementById('chatbot-input');
+    chatbotToggle.addEventListener('click', () => {
+      chatbot.classList.toggle('active');
+      chatbotToggle.style.display = chatbot.classList.contains('active') ? 'none' : 'block';
+      playSound('click');
+    });
+    chatbotClose.addEventListener('click', () => {
+      chatbot.classList.remove('active');
+      chatbotToggle.style.display = 'block';
+      playSound('click');
+    });
+    chatbotInput.addEventListener('keypress', e => {
+      if (e.key === 'Enter' && chatbotInput.value.trim()) {
+        const userMessage = chatbotInput.value;
+        chatbotMessages.innerHTML += `<p>You: ${userMessage}</p>`;
+        const typingIndicator = document.getElementById('chatbot-typing');
+        typingIndicator.classList.add('active');
+        let botResponse = 'Thanks for asking! Try asking about my skills or projects.';
+        if (userMessage.toLowerCase().includes('skill')) {
+          botResponse = 'I’m skilled in C/C++, Java, HTML, CSS, JavaScript, and more. Check the Experience section!';
+        } else if (userMessage.toLowerCase().includes('project')) {
+          botResponse = 'I’ve built an Algorithm Visualizer, Web App Dashboard, and Chat App. See the Projects section!';
+        } else if (userMessage.toLowerCase().includes('education')) {
+          botResponse = 'I studied at St. Placid School and College (SSC & HSC) and am pursuing a BSc in CSE at IIUC. Check the Education section!';
+        } else if (userMessage.toLowerCase().includes('resume')) {
+          botResponse = 'You can download my resume from the About section! It details my skills and projects.';
+        }
+        setTimeout(() => {
+          typingIndicator.classList.remove('active');
+          chatbotMessages.innerHTML += `<p>CodeBot: ${botResponse}</p>`;
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }, 500);
+        chatbotInput.value = '';
+        playSound('type');
+      }
+    });
+
+    // Contact tooltips
+    tippy('.contact-links a', {
+      content: el => el.getAttribute('data-tooltip'),
+      theme: 'glass',
+      animation: 'fade'
+    });
+
+    // Back to Top
+    window.addEventListener('scroll', () => {
+      const backToTop = document.querySelector('.back-to-top');
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+
+    // Particles
+    function createParticles(containerId, count) {
+      const container = document.getElementById(containerId);
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.width = `${Math.random() * 4 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(particle);
+      }
+    }
+    createParticles('about-particles', 10);
+    createParticles('experience-particles', 10);
+    createParticles('education-particles', 10);
+    createParticles('projects-particles', 10);
+    createParticles('contact-particles', 10);
+  </script>
+</body>
+</html>
